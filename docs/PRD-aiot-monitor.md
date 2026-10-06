@@ -220,7 +220,7 @@ stateDiagram-v2
 - [x] AC-05：Given 本機重啟 API，When 重新整理頁面，Then 歷史資料、告警規則與確認紀錄仍存在（資料不在 localStorage）。
 - [x] AC-06：Given `VITE_API_MODE=http` 且 API 未啟動，When 開啟網站，Then 提示並可切換 mock 模式，標示「模擬資料」。（線上自動 fallback 待部署時驗收）
 - [ ] AC-07：邊界情況 EC-01 ~ EC-10 都有對應測試或手動驗證紀錄。（EC-06、EC-09 已實作但尚未驗證，見下表）
-- [ ] AC-08：`npm run lint`、`npm run typecheck`、`npm test`、`npm run test:e2e` 在 CI 全部通過。（本機已全部通過；push 後確認 GitHub Actions）
+- [x] AC-08：`npm run lint`、`npm run typecheck`、`npm test`、`npm run test:e2e` 在 CI 全部通過。（GitHub Actions run 37408735968，1 分 21 秒）
 - [ ] AC-09：`docs/interview/` 內的講稿能在 3 分鐘內完成 demo，涵蓋考點對照表的每一列。（TODO 第四階段）
 - [x] AC-10：Given 刪除 `apps/api/data/aiot.db`，When 啟動 API，Then 3 秒內完成 24 小時回填，DB 筆數約 1.2 萬。
 

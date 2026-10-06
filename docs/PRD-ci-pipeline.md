@@ -22,7 +22,7 @@ push 與 PR 時自動跑 lint、typecheck、單元測試、build 與 E2E，確�
 ## 驗收標準
 
 - [x] AC-01：workflow 檔案通過 YAML 語法檢查，步驟與本機指令一致。
-- [ ] AC-02：push 後 GitHub Actions 全綠（push 後確認）。
+- [x] AC-02：push 後 GitHub Actions 全綠（run 37408735968）。
 
 ## 開發紀錄
 

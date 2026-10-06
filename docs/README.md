@@ -7,7 +7,7 @@
 | [PRD-aiot-monitor.md](PRD-aiot-monitor.md) | 全專案總規格 | Draft |
 | [PRD-monorepo-setup.md](PRD-monorepo-setup.md) | 01 npm workspaces、共用設定、`npm run dev` | 完成 |
 | [PRD-test-infra.md](PRD-test-infra.md) | 02 Vitest、`inject()`、Playwright | 完成 |
-| [PRD-ci-pipeline.md](PRD-ci-pipeline.md) | 03 GitHub Actions | 完成（待 push 驗證） |
+| [PRD-ci-pipeline.md](PRD-ci-pipeline.md) | 03 GitHub Actions | 完成 |
 | [PRD-shared-schema.md](PRD-shared-schema.md) | 04 型別、zod schema、array 方法轉換函式 | 完成 |
 | [PRD-simulator.md](PRD-simulator.md) | 05 seeded 機台模擬器 | 完成 |
 | [PRD-storage.md](PRD-storage.md) | 06 SQLite、回填、寫入、保留期 | 完成 |
