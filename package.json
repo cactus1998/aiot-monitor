@@ -1,0 +1,14 @@
+{
+  "name": "aiot-monitor",
+  "version": "0.1.0",
+  "private": true,
+  "description": "機台戰情室：模擬工廠機台資料，Node.js API 儲存於 SQLite，Vue 3 + ECharts 即時與歷史視覺化",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {},
+  "engines": {
+    "node": ">=22.13"
+  }
+}
