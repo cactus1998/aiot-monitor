@@ -197,7 +197,7 @@ stateDiagram-v2
 
 ## 非功能需求
 
-- **效能**：首頁 JS gzip ≤ 250KB（ECharts 按需引入）；即時圖表每秒更新時維持 60fps；`/series` 24 小時查詢 p95 < 300ms（本機）；API 啟動含回填 < 3 秒。
+- **效能**：首頁 JS gzip ≤ 250KB（ECharts 按需引入；目前實測約 293KB，見 `PRD-chart-perf.md`）；即時圖表每秒更新時維持 60fps；`/series` 24 小時查詢 p95 < 300ms（本機）；API 啟動含回填 < 3 秒。
 - **無障礙**：所有圖表附「以表格檢視」切換；色彩不作為唯一狀態辨識（加圖示與文字）；鍵盤可操作篩選與分頁。
 - **RWD**：最小 400px；手機版 KPI 卡片兩欄、圖表全寬。
 - **時間**：一律以 UTC ms 儲存，畫面以 `Intl.DateTimeFormat`（Asia/Taipei）顯示。
@@ -213,16 +213,31 @@ stateDiagram-v2
 
 ## 驗收標準
 
-- [ ] AC-01：Given API 啟動，When 開啟總覽頁，Then 3 秒內看到 8 台機台、KPI 與狀態圓餅圖，且每秒更新。
-- [ ] AC-02：Given 機台詳情頁，When 切換 1h / 6h / 24h，Then 折線圖繪製點數 ≤ 2000，並顯示閾值線。
-- [ ] AC-03：Given 歷史查詢頁，When 選擇機台與時間範圍送出，Then 表格與折線圖顯示同一批資料，表格可排序與分頁。
-- [ ] AC-04：Given 歷史查詢結果，When 點擊匯出，Then 下載的 CSV 筆數與表格總筆數一致。
-- [ ] AC-05：Given 本機重啟 API，When 重新整理頁面，Then 歷史資料、告警規則與確認紀錄仍存在（資料不在 localStorage）。
-- [ ] AC-06：Given `VITE_API_MODE=http` 且 API 未啟動，When 開啟網站，Then 提示並可切換 mock 模式，標示「模擬資料」。（線上自動 fallback 待部署時驗收）
-- [ ] AC-07：邊界情況 EC-01 ~ EC-10 都有對應測試或手動驗證紀錄。
-- [ ] AC-08：`npm run lint`、`npm run typecheck`、`npm test`、`npm run test:e2e` 在 CI 全部通過。
-- [ ] AC-09：`docs/interview/` 內的講稿能在 3 分鐘內完成 demo，涵蓋考點對照表的每一列。
-- [ ] AC-10：Given 刪除 `apps/api/data/aiot.db`，When 啟動 API，Then 3 秒內完成 24 小時回填，DB 筆數約 1.2 萬。
+- [x] AC-01：Given API 啟動，When 開啟總覽頁，Then 3 秒內看到 8 台機台、KPI 與狀態圓餅圖，且每秒更新。
+- [x] AC-02：Given 機台詳情頁，When 切換 1h / 6h / 24h，Then 折線圖繪製點數 ≤ 2000，並顯示閾值線。
+- [x] AC-03：Given 歷史查詢頁，When 選擇機台與時間範圍送出，Then 表格與折線圖顯示同一批資料，表格可排序與分頁。
+- [x] AC-04：Given 歷史查詢結果，When 點擊匯出，Then 下載的 CSV 筆數與表格總筆數一致。
+- [x] AC-05：Given 本機重啟 API，When 重新整理頁面，Then 歷史資料、告警規則與確認紀錄仍存在（資料不在 localStorage）。
+- [x] AC-06：Given `VITE_API_MODE=http` 且 API 未啟動，When 開啟網站，Then 提示並可切換 mock 模式，標示「模擬資料」。（線上自動 fallback 待部署時驗收）
+- [ ] AC-07：邊界情況 EC-01 ~ EC-10 都有對應測試或手動驗證紀錄。（EC-06、EC-09 已實作但尚未驗證，見下表）
+- [ ] AC-08：`npm run lint`、`npm run typecheck`、`npm test`、`npm run test:e2e` 在 CI 全部通過。（本機已全部通過；push 後確認 GitHub Actions）
+- [ ] AC-09：`docs/interview/` 內的講稿能在 3 分鐘內完成 demo，涵蓋考點對照表的每一列。（TODO 第四階段）
+- [x] AC-10：Given 刪除 `apps/api/data/aiot.db`，When 啟動 API，Then 3 秒內完成 24 小時回填，DB 筆數約 1.2 萬。
+
+### 邊界情況驗證紀錄
+
+| 編號 | 驗證方式 |
+|------|----------|
+| EC-01 | `useQuery.test.ts`：較舊請求晚回來時被忽略、前一個請求被 abort |
+| EC-02 | API / mock 空範圍測試；`DataTable.test.ts` 空狀態；ChartPanel 空狀態不畫座標軸 |
+| EC-03 | `http.test.ts` 逾時與 4xx / 5xx；瀏覽器實測 API 回 502 時各區塊各自顯示錯誤與重試 |
+| EC-04 | `routes.test.ts` 點數 ≤ points；E2E 24 小時範圍繪製點數 ≤ 2000 |
+| EC-05 | `live-connection.test.ts` 重連帶 lastEventId；`stream.test.ts` Last-Event-ID 補送與 resync |
+| EC-06 | 已實作（`requestAnimationFrame` 合併、`document.hidden` 時不排程），尚未驗證 |
+| EC-07 | `options.test.ts` null 保留且 `connectNulls: false`；`history.test.ts` 表格顯示「—」 |
+| EC-08 | shared schema 測試；E2E 超過 24 小時被表單阻擋 |
+| EC-09 | 已實作（vue-echarts `autoresize`），尚未驗證 |
+| EC-10 | `live-connection.test.ts` stop 清除計時器；`useQuery.test.ts` scope 結束時 abort；ECharts 由 vue-echarts 在卸載時 dispose |
 
 ## 風險與待決策
 
@@ -235,4 +250,5 @@ stateDiagram-v2
 
 ## 變更紀錄
 
+- 2026-10-06：第一至三階段實作完成（Kendo 對照頁除外）；API 預設 port 改為 3100（3000 常被其他工具占用）。
 - 2026-10-06：資料量縮小（保留 7 天改 24 小時、回填改每分鐘一筆、DB 每 10 秒寫入、時間範圍改 1h / 6h / 24h）；大量資料效能降為 Could；部署與 IIS 暫緩；新增「資料量與保存」與「協作方式」。

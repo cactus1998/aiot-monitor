@@ -1,0 +1,10 @@
+node_modules
+dist
+dist-mock
+package-lock.json
+playwright-report
+test-results
+apps/api/data
+.claude
+docs
+*.md

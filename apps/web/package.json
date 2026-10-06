@@ -1,0 +1,35 @@
+{
+  "name": "@aiot/web",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "dev:mock": "vite --mode mock",
+    "build": "vite build",
+    "build:mock": "vite build --mode mock --outDir dist-mock",
+    "preview": "vite preview",
+    "preview:mock": "vite preview --outDir dist-mock",
+    "typecheck": "vue-tsc --noEmit -p tsconfig.app.json",
+    "test": "vitest run",
+    "test:run": "vitest run",
+    "test:watch": "vitest"
+  },
+  "dependencies": {
+    "@aiot/shared": "*",
+    "@aiot/simulator": "*",
+    "echarts": "^6.1.0",
+    "pinia": "^4.0.3",
+    "vue": "^3.5.43",
+    "vue-echarts": "^8.3.1",
+    "vue-router": "^5.3.1",
+    "zod": "^4.6.5"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^6.0.9",
+    "@vue/test-utils": "^2.5.1",
+    "jsdom": "^29.1.1",
+    "vite": "^8.3.2",
+    "vue-tsc": "^3.3.12"
+  }
+}
