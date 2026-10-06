@@ -13,7 +13,7 @@ argument-hint: <METHOD /api/path 或描述>
 1. **規格**：對照 `docs/PRD-aiot-monitor.md` 的 API 表與相關 PRD。新端點不在總規格中時，先詢問使用者並補進總規格。
 2. **shared**（`packages/shared/src/api/<resource>.ts`）：
    - 定義 `<Name>QuerySchema`、`<Name>BodySchema`、`<Name>ResponseSchema`，匯出 `z.infer` 型別。
-   - query 字串轉數字用 `z.coerce`；時間範圍 refine `from < to` 且不超過 7 天；`pageSize` 上限 500。
+   - query 字串轉數字用 `z.coerce`；時間範圍 refine `from < to` 且不超過 24 小時；`pageSize` 上限 500。
    - 從 `packages/shared/src/index.ts` 匯出。
 3. **api**：
    - repository（`apps/api/src/db/<resource>.ts`）：參數化 SQL，回傳已整形的資料；不在路由裡寫 SQL。

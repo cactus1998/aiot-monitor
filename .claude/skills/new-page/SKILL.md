@@ -24,7 +24,7 @@ apps/web/src/
    ```ts
    { path: '/history', name: 'history', component: () => import('@/views/HistoryView.vue'), meta: { title: '歷史查詢' } }
    ```
-   部署在 GitHub Pages 子路徑，使用 hash 路由與 `import.meta.env.BASE_URL`，不要改成 history 模式。
+   部署位置未定（可能是 GitHub Pages 子路徑），一律使用 hash 路由與 `import.meta.env.BASE_URL`，不要改成 history 模式。
 4. **資料**：
    - 查詢 composable 回傳 `{ data, status, error, refresh }`，條件變動時 abort 舊請求。
    - 篩選條件與 URL query 雙向同步（`useRoute` / `router.replace`），非法值回到預設。

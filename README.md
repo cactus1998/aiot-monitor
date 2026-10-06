@@ -9,7 +9,7 @@
 
 ## 狀態
 
-規劃中，尚未建立程式碼。規格見 [docs/PRD-aiot-monitor.md](docs/PRD-aiot-monitor.md)，開發順序見 [docs/TODO.md](docs/TODO.md)。
+規劃中，尚未建立程式碼。資料量刻意保持小（保留 24 小時、DB 約 7 萬筆以內），部署位置暫緩決定。規格見 [docs/PRD-aiot-monitor.md](docs/PRD-aiot-monitor.md)，開發順序見 [docs/TODO.md](docs/TODO.md)。
 
 ## 開發
 

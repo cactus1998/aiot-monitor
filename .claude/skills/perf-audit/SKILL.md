@@ -16,7 +16,7 @@ argument-hint: [web | api | chart | all]
 
 ## 圖表（chart）
 
-1. `npm run dev`，開啟機台詳情頁 7d 範圍與即時模式。
+1. `npm run dev`，開啟機台詳情頁 24h 範圍與即時模式。
 2. 量測：
    - 首次繪製：`performance.now()` 包住 `setOption`，或看 `ChartPanel` 顯示的耗時。
    - 即時更新：DevTools Performance 錄 10 秒，檢查長任務（> 50ms）與每秒 frame 數。
@@ -25,7 +25,7 @@ argument-hint: [web | api | chart | all]
 
 ## API
 
-1. 用 `curl -w "%{time_total}\n" -o /dev/null -s <url>` 對 `/api/machines/:id/series`（7d）、`/api/readings`（最後一頁）、`/api/readings.csv` 各量 10 次，取 p50 / p95。目標 `/series` p95 < 300ms。
+1. 用 `curl -w "%{time_total}\n" -o /dev/null -s <url>` 對 `/api/machines/:id/series`（24h）、`/api/readings`（最後一頁）、`/api/readings.csv` 各量 10 次，取 p50 / p95。目標 `/series` p95 < 300ms。
 2. 慢的查詢用 `EXPLAIN QUERY PLAN` 確認有走 `(machine_id, ts)` 索引，沒有 `SCAN readings`。
 3. 深分頁用 OFFSET 很慢時，評估 keyset pagination（`ts < ?`）。
 
