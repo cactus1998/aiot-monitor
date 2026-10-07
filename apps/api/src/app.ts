@@ -66,7 +66,7 @@ export async function buildApp(options: AppOptions = {}) {
   await app.register(swagger, {
     openapi: {
       info: {
-        title: '機台戰情室 AIoT Monitor API',
+        title: 'AIoT Monitor API',
         description: '模擬機台讀值、時間序列、總覽統計、告警與 SSE 即時串流。',
         version: '0.1.0',
       },

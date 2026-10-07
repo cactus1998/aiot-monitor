@@ -39,7 +39,7 @@ const links = [
       <div class="brand">
         <span class="logo" aria-hidden="true">◢</span>
         <div>
-          <strong>機台戰情室</strong>
+          <strong>AIoT Monitor</strong>
           <small>AIoT Monitor</small>
         </div>
       </div>

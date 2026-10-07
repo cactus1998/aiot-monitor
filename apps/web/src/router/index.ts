@@ -61,7 +61,7 @@ export function createAppRouter() {
     scrollBehavior: (to, from, saved) => saved ?? (to.path === from.path ? false : { top: 0 }),
   })
   router.afterEach((to) => {
-    document.title = `${to.meta.title ?? ''}｜機台戰情室`
+    document.title = `${to.meta.title ?? ''}｜AIoT Monitor`
   })
   return router
 }

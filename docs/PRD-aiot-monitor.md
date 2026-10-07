@@ -1,4 +1,4 @@
-# PRD：機台戰情室 AIoT Monitor（aiot-monitor）
+# PRD：AIoT Monitor（aiot-monitor）
 
 ## 背景與目標
 

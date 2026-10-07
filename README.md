@@ -1,4 +1,4 @@
-# 機台戰情室 AIoT Monitor
+# AIoT Monitor
 
 模擬工廠機台每秒產生的感測資料，由 Node.js API 收集並儲存在 SQLite，前端以 Vue 3 + ECharts 呈現即時監控、歷史查詢、告警與趨勢預測。
 
