@@ -1,6 +1,6 @@
 # aiot-monitor
 
-求職作品：模擬工廠機台 → Node.js API + SQLite → Vue 3 + ECharts 即時與歷史視覺化。目標職缺類型與面試考點見 `docs/PRD-aiot-monitor.md`。
+作品集專案：模擬工廠機台 → Node.js API + SQLite → Vue 3 + ECharts 即時與歷史視覺化。目標領域與考點見 `docs/PRD-aiot-monitor.md`。
 
 ## 工作方式
 
