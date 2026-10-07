@@ -1,6 +1,6 @@
 # 文件
 
-開發順序與依賴見 [TODO.md](TODO.md)。面試相關文件在 [interview/](interview/)。
+開發順序與依賴見 [TODO.md](TODO.md)。
 
 | 文件 | 範圍 | 狀態 |
 |------|------|------|

@@ -2,7 +2,7 @@
 
 ## 目標
 
-建立 npm workspaces 單一 repo，讓前端、後端、共用套件與模擬器共用同一份型別與工具設定。面試時可說明「前後端共用 schema 的 monorepo 怎麼組」。
+建立 npm workspaces 單一 repo，讓前端、後端、共用套件與模擬器共用同一份型別與工具設定。
 
 ## 範圍
 

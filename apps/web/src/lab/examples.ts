@@ -83,7 +83,7 @@ Object.fromEntries(
   },
   {
     id: 'reduceGroupBy',
-    title: '用 reduce 手寫 groupBy（常見筆試題）',
+    title: '用 reduce 手寫 groupBy',
     method: 'reduce',
     mutates: false,
     note: '不支援 Object.groupBy 的環境，用 reduce 搭配物件累加器。',

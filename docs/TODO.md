@@ -2,7 +2,7 @@
 
 總規格見 [PRD-aiot-monitor.md](PRD-aiot-monitor.md)。每一項開工前先用 `/feature-spec <slug>` 寫出 `docs/PRD-<slug>.md`（已存在就直接用），完成後勾選該 PRD 的驗收標準並更新下方狀態。
 
-順序依「面試必考 → 加分」排列：第一、二階段完成就能應付筆試考點與作品集展示，第三階段之後是加分項。
+順序依「核心功能 → 進階功能」排列：第一、二階段完成核心監控流程，第三階段之後是進階功能。
 
 後端項目（06、07、09、16）完成後，以白話向開發者說明資料流並回答問題，再進下一項（見總規格「協作方式」）。
 
@@ -14,7 +14,7 @@
 | 02 | [test-infra](PRD-test-infra.md) | 各 workspace 導入 Vitest；api 用 `fastify.inject()`；Playwright 設定；spike 確認 Vitest 能載入 `node:sqlite` | 01 | 完成 |
 | 03 | [ci-pipeline](PRD-ci-pipeline.md) | GitHub Actions：lint、typecheck、unit test、build、E2E | 02 | 完成 |
 
-## 第二階段：核心功能（面試必考）
+## 第二階段：核心功能
 
 | # | PRD | 內容 | 基於 | 狀態 |
 |---|-----|------|------|------|
@@ -28,9 +28,9 @@
 | 11 | [data-table](PRD-data-table.md) | 泛型 `DataTable`：欄位定義、伺服器端分頁排序、loading / 空 / 錯誤狀態、鍵盤操作 | 08 | 完成 |
 | 12 | [overview-page](PRD-overview-page.md) | 總覽：KPI 卡片、狀態圓餅圖、機台卡片即時更新 | 09、10 | 完成 |
 | 13 | [machine-detail](PRD-machine-detail.md) | 機台詳情：即時多指標折線圖、1h / 6h / 24h、dataZoom、閾值線、事件列表 | 09、10 | 完成 |
-| 14 | [history-query](PRD-history-query.md) | 歷史查詢：篩選表單、表格與折線圖連動、URL query 同步、CSV 匯出（**筆試題原型**） | 10、11 | 完成 |
+| 14 | [history-query](PRD-history-query.md) | 歷史查詢：篩選表單、表格與折線圖連動、URL query 同步、CSV 匯出 | 10、11 | 完成 |
 
-## 第三階段：加分項
+## 第三階段：進階功能
 
 | # | PRD | 內容 | 基於 | 狀態 |
 |---|-----|------|------|------|
@@ -40,7 +40,6 @@
 | 19 | [about-page](PRD-about-page.md) | `/about`：架構圖、資料流、資料儲存設計（回答「資料存在哪」）、技術選型 | 14 | 完成 |
 | 20 | [chart-perf](PRD-chart-perf.md) | （Could）LTTB 降採樣、背景暫停重繪；頁面顯示原始 / 繪製點數與耗時，僅作技能示範（Web Worker 不做） | 13 | 完成 |
 | 21 | [ui-polish](PRD-ui-polish.md) | 深色主題、RWD 400px、圖表 a11y、`prefers-reduced-motion` | 14 | 完成 |
-| 23 | [kendo-compare](PRD-kendo-compare.md) | （Could）Kendo UI for Vue Grid 對照頁，先確認授權 | 14 | 未做（待確認授權） |
 | 24 | [openapi](PRD-openapi.md) | （Could）`@fastify/swagger` 產生 API 文件 | 07 | 完成 |
 
 ## 部署
@@ -50,17 +49,7 @@
 | 15 | [deploy](PRD-deploy.md) | 前端部署（GitHub Pages 或 kentfolio.dev，mock 模式）、API 部署雲端主機、portfolio 首頁加入連結 | 03、14 | 前端完成（kentfolio.dev/aiot-monitor/，mock 模式）；API 暫緩 |
 | 22 | [iis-deploy](PRD-iis-deploy.md) | `deploy/iis/web.config`：URL Rewrite SPA fallback、ARR 反向代理 `/api`、SSE 關閉緩衝；部署文件 | 15 | 暫緩 |
 
-## 第四階段：面試準備
-
-- [ ] 25 `docs/interview/array-methods.md`：常考 array 方法速查與手寫範例（含 `reduce` 實作 `groupBy`、手寫 `map` / `filter` polyfill、`sort` 比較函式陷阱、改變原陣列與否對照）
-- [ ] 26 `docs/interview/framework-tradeoffs.md`：Vue 3 vs React vs jQuery + Kendo UI 優缺點、本專案選型理由、圖表套件選型（ECharts vs Chart.js / ApexCharts / Highcharts）、改用 C# ASP.NET Core 後端的差異
-- [ ] 27 `docs/interview/data-storage.md`：「資料存在哪裡」完整回答（SQLite schema、索引、24 小時保留期、每 10 秒寫入的取捨、降採樣、為何不用 localStorage、正式環境改用 TimescaleDB / InfluxDB 的考量）
-- [ ] 28 `docs/interview/demo-script.md`：3 分鐘 demo 講稿，依考點對照表的順序
-- [ ] 29 用 `/written-test-drill` 完成三次一小時模擬筆試（API → 表格 + 折線圖），每次記錄耗時與卡關點
-- [ ] 30 用 `/interview-notes` 為 storage、rest-api、sse-stream、history-query 產生講稿
-
 ## 需要使用者處理
 
 - [x] 決定前端部署位置：kentfolio.dev/aiot-monitor/（15）
 - [ ] 決定 API 部署主機（15 的 API 部分、22 暫緩中）
-- [ ] 確認 Kendo UI for Vue 免費元件授權範圍（23）

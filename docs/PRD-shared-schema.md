@@ -2,7 +2,7 @@
 
 ## 目標
 
-前後端只有一份資料契約：指標定義、zod schema、API 型別與純函式都放在 `packages/shared`。資料轉換全部用 array 方法實作並有單元測試，對應「JS array 方法」筆試考點。
+前後端只有一份資料契約：指標定義、zod schema、API 型別與純函式都放在 `packages/shared`。資料轉換全部用 array 方法實作並有單元測試。
 
 ## 範圍
 

@@ -2,7 +2,7 @@
 
 ## 目標
 
-用 Apache ECharts + vue-echarts 封裝四種圖表，頁面只傳 shared 型別的資料，不直接寫 ECharts option。對應「折線圖、圓餅圖」考點。
+用 Apache ECharts + vue-echarts 封裝四種圖表，頁面只傳 shared 型別的資料，不直接寫 ECharts option。
 
 ## 範圍
 

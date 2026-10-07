@@ -2,6 +2,8 @@
 
 模擬工廠機台每秒產生的感測資料，由 Node.js API 收集並儲存在 SQLite，前端以 Vue 3 + ECharts 呈現即時監控、歷史查詢、告警與趨勢預測。
 
+**Demo：<https://kentfolio.dev/aiot-monitor/>**（前端展示版，資料由瀏覽器內的模擬器產生，不需後端）
+
 - 前端：Vue 3、TypeScript、Vite、Pinia、Vue Router、ECharts（vue-echarts，按需引入）
 - 後端：Node.js 22、Fastify、`node:sqlite`、zod、SSE、OpenAPI
 - 共用：`packages/shared`（型別、schema、資料轉換）、`packages/simulator`（機台模擬器）
@@ -9,7 +11,7 @@
 
 ## 狀態
 
-第一至三階段功能已完成（Kendo UI 對照頁待確認授權）；部署暫緩。資料量刻意保持小：資料庫保留 24 小時、約 7 萬筆以內。規格見 [docs/PRD-aiot-monitor.md](docs/PRD-aiot-monitor.md)，開發順序見 [docs/TODO.md](docs/TODO.md)。
+第一至三階段功能已完成；前端展示版已部署，API 雲端部署暫緩。資料量刻意保持小：資料庫保留 24 小時、約 7 萬筆以內。規格見 [docs/PRD-aiot-monitor.md](docs/PRD-aiot-monitor.md)，開發順序見 [docs/TODO.md](docs/TODO.md)。
 
 ## 開發
 

@@ -12,7 +12,7 @@
   - 機台詳情 1 小時範圍：歷史點 + SSE 即時點超過 2000 時，用 shared `lttb()` 降到 2000 點。
   - 分頁在背景時不重繪：live store 以 `requestAnimationFrame` 合併更新、`document.hidden` 時不排程，回到前景一次更新（總規格 EC-06）。
   - 首頁打包體積量測腳本 `scripts/bundle-size.mjs`。
-- **Won't**：Web Worker。LTTB 處理 4000 點在主執行緒不到 1ms，搬到 Worker 的傳輸成本反而更高；面試時口頭說明何時需要（數十萬點以上）。
+- **Won't**：Web Worker。LTTB 處理 4000 點在主執行緒不到 1ms，搬到 Worker 的傳輸成本反而更高；數十萬點以上才需要。
 
 ## 驗收標準
 

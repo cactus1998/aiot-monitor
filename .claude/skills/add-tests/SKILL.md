@@ -6,7 +6,7 @@ argument-hint: <PRD slug | web | api | shared | simulator>
 
 # 加測試
 
-面試時，有測試的 demo 比沒有測試的更有說服力。測試要驗證行為，不是驗證實作細節。
+有測試的功能才能放心修改與展示。測試要驗證行為，不是驗證實作細節。
 
 ## 位置
 
