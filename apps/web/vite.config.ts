@@ -16,6 +16,9 @@ export default defineConfig({
     },
   },
   build: {
+    // ECharts is already registered on demand (see components/charts/echarts.ts) and split
+    // into its own chunk (~620 kB raw, ~210 kB gzip); raise the warning limit to match.
+    chunkSizeWarningLimit: 650,
     rollupOptions: {
       output: {
         manualChunks(id) {

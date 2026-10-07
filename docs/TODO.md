@@ -43,11 +43,11 @@
 | 23 | [kendo-compare](PRD-kendo-compare.md) | （Could）Kendo UI for Vue Grid 對照頁，先確認授權 | 14 | 未做（待確認授權） |
 | 24 | [openapi](PRD-openapi.md) | （Could）`@fastify/swagger` 產生 API 文件 | 07 | 完成 |
 
-## 暫緩：部署（部署位置決定後再處理）
+## 部署
 
 | # | PRD | 內容 | 基於 | 狀態 |
 |---|-----|------|------|------|
-| 15 | [deploy](PRD-deploy.md) | 前端部署（GitHub Pages 或 kentfolio.dev，mock 模式）、API 部署雲端主機、portfolio 首頁加入連結 | 03、14 | 暫緩 |
+| 15 | [deploy](PRD-deploy.md) | 前端部署（GitHub Pages 或 kentfolio.dev，mock 模式）、API 部署雲端主機、portfolio 首頁加入連結 | 03、14 | 前端完成（kentfolio.dev/aiot-monitor/，mock 模式）；API 暫緩 |
 | 22 | [iis-deploy](PRD-iis-deploy.md) | `deploy/iis/web.config`：URL Rewrite SPA fallback、ARR 反向代理 `/api`、SSE 關閉緩衝；部署文件 | 15 | 暫緩 |
 
 ## 第四階段：面試準備
@@ -61,5 +61,6 @@
 
 ## 需要使用者處理
 
-- [ ] 決定部署位置（15、22 暫緩中）
+- [x] 決定前端部署位置：kentfolio.dev/aiot-monitor/（15）
+- [ ] 決定 API 部署主機（15 的 API 部分、22 暫緩中）
 - [ ] 確認 Kendo UI for Vue 免費元件授權範圍（23）

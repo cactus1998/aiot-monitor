@@ -26,3 +26,4 @@
 | [PRD-chart-perf.md](PRD-chart-perf.md) | 20 圖表效能展示（Could） | 完成（不含 Web Worker） |
 | [PRD-ui-polish.md](PRD-ui-polish.md) | 21 深色主題、RWD、無障礙 | 完成 |
 | [PRD-openapi.md](PRD-openapi.md) | 24 OpenAPI 文件（Could） | 完成 |
+| [PRD-deploy.md](PRD-deploy.md) | 15 前端 mock 版部署、作品集連結 | 前端完成（API 暫緩） |
