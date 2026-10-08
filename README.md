@@ -19,7 +19,7 @@
 
 ### 1. 規格先行：總規格 → 功能 PRD → TODO
 
-- [總規格](docs/PRD-aiot-monitor.md)定義系統目標、架構、資料量與保存策略，拆成 23 份功能 PRD（[docs/](docs/README.md)）。
+- [總規格](docs/PRD-aiot-monitor.md)定義系統目標、架構、資料量與保存策略，拆成 22 份功能 PRD（[docs/](docs/README.md)）。
 - 每份 PRD 用同一個格式：目標、MoSCoW 範圍（Must / Should / Could / Won't）、使用情境、狀態流程、API 介面、邊界情況（EC）、Given-When-Then 驗收標準（AC）。
 - [TODO](docs/TODO.md) 依相依關係分三個階段排序，每一項標明「基於」哪些前置項目，先打基礎建設與共用 schema，再做頁面。
 - 驗收時把每個邊界情況對應到實際的測試檔，記錄在 PRD 裡；沒驗證到的項目照實標示「尚未驗證」。
