@@ -13,6 +13,43 @@
 
 第一至三階段功能已完成；前端展示版已部署，API 雲端部署暫緩。資料量刻意保持小：資料庫保留 24 小時、約 7 萬筆以內。規格見 [docs/PRD-aiot-monitor.md](docs/PRD-aiot-monitor.md)，開發順序見 [docs/TODO.md](docs/TODO.md)。
 
+## 開發方式：規格驅動的 AI 協作
+
+本專案以 AI 輔助開發（Claude Code）。我的重心在**規劃與把關**：先把需求拆成可驗收的規格，再把開發流程與程式規範寫成 skill，讓 AI 每一次都照同一套流程產出，最後由測試與 CI 驗證。
+
+### 1. 規格先行：總規格 → 功能 PRD → TODO
+
+- [總規格](docs/PRD-aiot-monitor.md)定義系統目標、架構、資料量與保存策略，拆成 23 份功能 PRD（[docs/](docs/README.md)）。
+- 每份 PRD 用同一個格式：目標、MoSCoW 範圍（Must / Should / Could / Won't）、使用情境、狀態流程、API 介面、邊界情況（EC）、Given-When-Then 驗收標準（AC）。
+- [TODO](docs/TODO.md) 依相依關係分三個階段排序，每一項標明「基於」哪些前置項目，先打基礎建設與共用 schema，再做頁面。
+- 驗收時把每個邊界情況對應到實際的測試檔，記錄在 PRD 裡；沒驗證到的項目照實標示「尚未驗證」。
+- 範圍調整寫進變更紀錄：例如資料保留由 7 天縮為 24 小時、即時讀值改為每 10 秒寫入一筆，讓本機啟動與測試維持在數秒內。
+
+### 2. 流程寫成 skill：讓 AI 照規矩做事
+
+`.claude/skills/` 把「怎麼做」固定下來，不必每次重新交代：
+
+| 階段 | skill | 規範的內容 |
+|------|-------|-----------|
+| 規劃 | `feature-spec` | 實作前先產出上述格式的 PRD |
+| 實作 | `api-endpoint` | 新增端點一律依 shared zod schema → Fastify 路由 → 前端 `ApiClient`（http 與 mock 兩種實作）的順序，前後端不會不同步 |
+| 實作 | `new-page`、`chart-panel`、`vue-conventions` | 頁面結構、URL query 同步、圖表封裝與 ECharts 按需引入、Vue / Pinia 撰寫規範 |
+| 品質 | `add-tests`、`perf-audit`、`verify-and-stop` | 各層測試寫法、打包體積與繪製效能量測、只驗收不擴大範圍 |
+| 修改 | `investigate-first`、`surgical-patch`、`safe-refactor` | 先找原因再動手、在最小範圍修 bug、重構時保持行為不變 |
+| 交付 | `git-commit`、`deploy-check` | lint、型別檢查、測試通過才提交；上線前檢查 base 路徑與路由 |
+
+### 3. 我做的技術決策
+
+- 前後端共用 zod schema，API 回應在前端也驗證。
+- 即時資料用 SSE，斷線時重連、用 `Last-Event-ID` 補資料，失敗再退回輪詢。
+- 伺服器端分桶降採樣，加上前端 LTTB，控制圖表繪製點數。
+- 沒有後端時自動切換為瀏覽器內模擬資料，作品隨時可以展示。
+
+### 4. AI 負責的部分
+
+- 依 PRD 與 skill 產生實作程式碼與測試，後端 API 與資料庫層主要由 AI 實作，我負責審查並能說明完整資料流。
+- 所有變更都要通過 lint、型別檢查、單元 / 元件 / E2E 測試與 CI 才合併。
+
 ## 開發
 
 需要 Node.js 22.13 以上。
